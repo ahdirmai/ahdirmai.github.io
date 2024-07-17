@@ -7,6 +7,7 @@
     <title>Coming Soon | Ahdirmai.me</title>
     <!-- external css -->
     <link rel="stylesheet" href="style.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -44,13 +45,43 @@
         </div>
         <p>Be the first to know when this website launches!</p>
         <div class="email-form">
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">Notify Me</button>
+            <input type="email" id="email" placeholder="Enter your email" required />
+            <div class="g-recaptcha" data-sitekey="6Lc8iRIqAAAAAOcRDHK4HfoN22VBJcT26fwxnhnR"></div>
+            <button type="submit" onclick="submitEmail()">Notify Me</button>
         </div>
     </div>
 </body>
 <!-- external script -->
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="script.js"></script>
+<script>
+    function submitEmail() {
+        var email = document.getElementById("email").value;
+        var recaptcha = document.querySelector(".g-recaptcha-response").value;
+        var url =
+            "https://script.google.com/macros/s/AKfycbztMZb6XeWj4ec6FBI63MBnpjUvqrHwb5cMAnd5hGqr6WenYAabvEkAa1HBQlh_-Hp5/exec"; // Replace with your script URL
+        fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({
+                    email: email,
+                    "g-recaptcha-response": recaptcha,
+                }),
+            })
+            .then((response) => {
+                if (response.ok) {
+                    alert("Thank you! You will be notified.");
+                } else {
+                    alert("There was a problem with your request. Please try again.");
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("There was a problem with your request. Please try again.");
+            });
+    }
+</script>
 
 </html>
