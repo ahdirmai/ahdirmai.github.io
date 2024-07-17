@@ -64,13 +64,16 @@ h1 {
   font-weight: bold;
 }
 
-.countdown-label {
+countdown-label {
   text-transform: uppercase;
   font-size: 0.8rem;
 }
 
 .email-form {
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input[type="email"] {
@@ -83,6 +86,11 @@ input[type="email"] {
   outline: none;
   font-size: 1rem;
   text-align: center;
+  margin-bottom: 10px; /* Add margin to separate from reCAPTCHA */
+}
+
+.g-recaptcha {
+  margin-bottom: 10px; /* Add margin to separate from button */
 }
 
 button {
