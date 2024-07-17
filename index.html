@@ -5,9 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coming Soon | Ahdirmai.me</title>
-    <!-- external css -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" />
     <link rel="stylesheet" href="style.css" />
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -25,20 +24,20 @@
         <h1>Coming Soon</h1>
         <div class="countdown-card">
             <div class="countdown">
-                <div class="countdown-item countdown-card">
-                    <div class="countdown-value" id="days">00</div>
+                <div class="countdown-item">
+                    <div class="countdown-value countdown-card" id="days">00</div>
                     <div class="countdown-label">Days</div>
                 </div>
-                <div class="countdown-item countdown-card">
-                    <div class="countdown-value" id="hours">00</div>
+                <div class="countdown-item">
+                    <div class="countdown-value countdown-card" id="hours">00</div>
                     <div class="countdown-label">Hours</div>
                 </div>
-                <div class="countdown-item countdown-card">
-                    <div class="countdown-value" id="minutes">00</div>
+                <div class="countdown-item">
+                    <div class="countdown-value countdown-card" id="minutes">00</div>
                     <div class="countdown-label">Minutes</div>
                 </div>
-                <div class="countdown-item countdown-card">
-                    <div class="countdown-value" id="seconds">00</div>
+                <div class="countdown-item">
+                    <div class="countdown-value countdown-card" id="seconds">00</div>
                     <div class="countdown-label">Seconds</div>
                 </div>
             </div>
@@ -47,41 +46,41 @@
         <div class="email-form">
             <input type="email" id="email" placeholder="Enter your email" required />
             <div class="g-recaptcha" data-sitekey="6Lc8iRIqAAAAAOcRDHK4HfoN22VBJcT26fwxnhnR"></div>
-            <button type="submit" onclick="submitEmail()">Notify Me</button>
+            <button type="button" onclick="submitEmail()">Notify Me</button>
         </div>
     </div>
-</body>
-<!-- external script -->
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="script.js"></script>
-<script>
-    function submitEmail() {
-        var email = document.getElementById("email").value;
-        var recaptcha = document.querySelector(".g-recaptcha-response").value;
-        var url =
-            "https://script.google.com/macros/s/AKfycbztMZb6XeWj4ec6FBI63MBnpjUvqrHwb5cMAnd5hGqr6WenYAabvEkAa1HBQlh_-Hp5/exec"; // Replace with your script URL
-        fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: new URLSearchParams({
-                    email: email,
-                    "g-recaptcha-response": recaptcha,
-                }),
-            })
-            .then((response) => {
-                if (response.ok) {
-                    alert("Thank you! You will be notified.");
-                } else {
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function submitEmail() {
+            var email = document.getElementById("email").value;
+            var recaptcha = document.querySelector(".g-recaptcha-response").value;
+            var url =
+                "https://script.google.com/macros/s/AKfycbztMZb6XeWj4ec6FBI63MBnpjUvqrHwb5cMAnd5hGqr6WenYAabvEkAa1HBQlh_-Hp5/exec"; // Ganti dengan URL skrip Anda
+            fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: new URLSearchParams({
+                        email: email,
+                        "g-recaptcha-response": recaptcha,
+                    }),
+                })
+                .then((response) => {
+                    if (response.ok) {
+                        alert("Thank you! You will be notified.");
+                    } else {
+                        alert("There was a problem with your request. Please try again.");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
                     alert("There was a problem with your request. Please try again.");
-                }
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-                alert("There was a problem with your request. Please try again.");
-            });
-    }
-</script>
+                });
+        }
+    </script>
+</body>
 
 </html>

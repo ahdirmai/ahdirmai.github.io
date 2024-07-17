@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
+/* style.css */
+
 * {
   margin: 0;
   padding: 0;
@@ -35,6 +36,8 @@ body {
 .container {
   text-align: center;
   padding: 20px;
+  position: relative; /* Pastikan elemen ini memiliki posisi relatif */
+  z-index: 1; /* Atur z-index lebih tinggi dari .cube jika perlu */
 }
 
 h1 {
@@ -64,7 +67,7 @@ h1 {
   font-weight: bold;
 }
 
-countdown-label {
+.countdown-label {
   text-transform: uppercase;
   font-size: 0.8rem;
 }
@@ -86,11 +89,11 @@ input[type="email"] {
   outline: none;
   font-size: 1rem;
   text-align: center;
-  margin-bottom: 10px; /* Add margin to separate from reCAPTCHA */
+  margin-bottom: 10px;
 }
 
 .g-recaptcha {
-  margin-bottom: 10px; /* Add margin to separate from button */
+  margin-bottom: 10px;
 }
 
 button {
@@ -156,6 +159,7 @@ button:hover {
   0% {
     transform: translate(-50%, -50%) rotateX(0) rotateY(0);
   }
+
   100% {
     transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg);
   }
@@ -169,32 +173,46 @@ button:hover {
   h1 {
     font-size: 2rem;
   }
+
   .countdown-value {
     font-size: 2rem;
   }
+
   .cube {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: calc(50% - 100px); /* Mengubah top agar posisi tengah lebih akurat */
+    left: calc(50% - 100px); /* Mengubah left agar posisi tengah lebih akurat */
+    transform-style: preserve-3d;
+    animation: rotate 20s linear infinite;
   }
+
   .cube-face {
     width: 100px;
     height: 100px;
   }
+
   .cube-face:nth-child(1) {
     transform: translateZ(50px);
   }
+
   .cube-face:nth-child(2) {
     transform: rotateY(180deg) translateZ(50px);
   }
+
   .cube-face:nth-child(3) {
     transform: rotateY(-90deg) translateZ(50px);
   }
+
   .cube-face:nth-child(4) {
     transform: rotateY(90deg) translateZ(50px);
   }
+
   .cube-face:nth-child(5) {
     transform: rotateX(-90deg) translateZ(50px);
   }
+
   .cube-face:nth-child(6) {
     transform: rotateX(90deg) translateZ(50px);
   }
